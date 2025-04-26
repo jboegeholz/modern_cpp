@@ -9,5 +9,5 @@ add_compile_options(-Wall)
 add_compile_options(-Wextra)
 add_compile_options(-Wpedantic)
 
-add_executable(auto_keyword auto_keyword.cpp)
-add_executable(std_array std_array.cpp)
+add_executable(auto_keyword 01_auto_keyword.cpp)
+add_executable(std_array 02_std_array.cpp)
