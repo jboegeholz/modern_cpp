@@ -9,4 +9,4 @@ add_compile_options(-Wall)
 add_compile_options(-Wextra)
 add_compile_options(-Wpedantic)
 
-add_executable(modern_cpp main.cpp)
+add_executable(auto_keyword auto_keyword.cpp)
