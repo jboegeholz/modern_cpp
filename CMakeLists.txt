@@ -11,3 +11,4 @@ add_compile_options(-Wpedantic)
 
 add_executable(auto_keyword src/01_auto_keyword.cpp)
 add_executable(std_array src/02_std_array.cpp)
+add_executable(std_iota src/03_std_iota.cpp)
