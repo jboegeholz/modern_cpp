@@ -1,42 +1,38 @@
 #include <iostream>
+#include <iomanip>
 #include <algorithm>
-#include <cmath>
-#include <numeric>
-#include <ranges>
+bool sort_descending(const float a, const float b){
+    return a > b;
+}
+
+void print_vector(const std::vector<float>& numbers) {
+    for (const float x : numbers) {
+        std::cout << std::fixed << std::setprecision(1) << x << " | ";
+    }
+    std::cout << std::endl;
+}
 
 int main() {
-    std::vector<float> numbers = { -3.5f, 1.0f, -2.0f };
+    std::vector<float> numbers = { -3.5, 1.0, -2.0, -11.0};
+    std::cout << "Unsorted Vector:" << std::endl;
+    print_vector(numbers);
 
-    for (float x : numbers) {
-        std::cout << x << " ";
-    }
-    std::cout << std::endl;
+    std::sort(numbers.begin(), numbers.end());
+    std::cout << "Sorted ascending:" << std::endl;
+    print_vector(numbers);
 
-    std::ranges::sort(numbers);
-    for (const float x : numbers) {
-        std::cout << x << " < ";
-    }
-    std::cout << std::endl;
+    // sort descending
+    std::sort(numbers.begin(), numbers.end(), sort_descending);
+    std::cout << "Sorted descending:" << std::endl;
+    print_vector(numbers);
 
-    std::ranges::sort(numbers,
-                      [](float a, float b) {
-                          return std::abs(a) < std::abs(b);
-                      }
-    );
-    for (const float x : numbers) {
-        std::cout << x << " ";
-    }
-    std::cout << std::endl;
+    // sort descending with lambda
+    std::sort(numbers.begin(), numbers.end());
 
-    std::ranges::sort(numbers, {}, [](float x) { return std::abs(x); });
+    std::sort(numbers.begin(), numbers.end(), [] (const float a, const float b) -> bool {return a > b;});
+    std::cout << "Sorted descending with lambdas:" << std::endl;
+    print_vector(numbers);
 
-    for (const float x : numbers) {
-        std::cout << x << " ";
-    }
-    std::cout << std::endl;
     return 0;
 }
 
-void abssort(float* x, unsigned n) {
-
-}
