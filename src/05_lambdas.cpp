@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <vector>
+
 bool sort_descending(const float a, const float b){
     return a > b;
 }

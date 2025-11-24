@@ -4,15 +4,22 @@ project(modern_cpp)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    message(STATUS "Using Clang - setting -stdlib=libc++")
+    message(STATUS "Compiler Clang")
+    add_compile_options(-Wall -Wextra -Wpedantic)
     add_compile_options(-stdlib=libc++)
     add_link_options(-stdlib=libc++)
+
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    message(STATUS "Compiler GCC")
+    add_compile_options(-Wall -Wextra -Wpedantic)
+
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    message(STATUS "Compiler MSVC")
+    add_compile_options(/W4 /WX)
 endif()
 
-add_compile_options(-Wall)
-add_compile_options(-Wextra)
-add_compile_options(-Wpedantic)
 
 add_executable(auto_keyword src/01_auto_keyword.cpp)
 add_executable(std_array src/02_std_array.cpp)
