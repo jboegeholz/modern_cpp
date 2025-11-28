@@ -3,19 +3,23 @@
 #include <algorithm>
 #include <vector>
 
-bool sort_descending(const float a, const float b){
+bool sort_descending(const float a, const float b)
+{
     return a > b;
 }
 
-void print_vector(const std::vector<float>& numbers) {
-    for (const float x : numbers) {
+void print_vector(const std::vector<float>& numbers)
+{
+    for (const float x : numbers)
+    {
         std::cout << std::fixed << std::setprecision(1) << x << " | ";
     }
     std::cout << std::endl;
 }
 
-int main() {
-    std::vector<float> numbers = { -3.5, 1.0, -2.0, -11.0};
+int main()
+{
+    std::vector<float> numbers = {-3.5, 1.0, -2.0, -11.0};
     std::cout << "Unsorted Vector:" << std::endl;
     print_vector(numbers);
 
@@ -31,10 +35,13 @@ int main() {
     // sort descending with lambda
     std::sort(numbers.begin(), numbers.end());
 
-    std::sort(numbers.begin(), numbers.end(), [] (const float a, const float b) -> bool {return a > b;});
+    std::sort(numbers.begin(), numbers.end(), [](const float a, const float b) -> bool { return a > b; });
     std::cout << "Sorted descending with lambdas:" << std::endl;
     print_vector(numbers);
-
+    auto twice = [](const auto& x)
+    {
+        return 2 * x;
+    };
+    std::cout << twice(4);
     return 0;
 }
-
