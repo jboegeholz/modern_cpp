@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <ranges>
 #include <cassert>
+#include <vector>
 
 int main() {
     std::vector<float> numbers = { -3.5, 1.0, -2.0, -11.0};
