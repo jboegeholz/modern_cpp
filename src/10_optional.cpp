@@ -7,15 +7,14 @@ std::optional<int> asInt(const std::string& s) // returns int or "no int"
         return std::stoi(s);
     }
     catch (...) {
-        return {};
+        return {};  // return std::nullopt;
     }
 }
 
 int main()
 {
-    for (auto s : {"42", " 077", "hello", "0x33"} ) {
-        std::optional<int> oi = asInt(s);
-        if (oi) {
+    for (const auto s : {"42", " 077", "hello", "0x33"} ) {
+        if (std::optional<int> oi = asInt(s)) {
             std::cout << "convert '" << s << "' to int: " << *oi << "\n"; // int
         }
         else {
