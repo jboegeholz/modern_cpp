@@ -37,4 +37,6 @@ int main()
     std::cout << strStack.top() << '\n';
     Stack<double> doubleStack;
     doubleStack.push(3.0);
+    std::cout << doubleStack.top() << '\n';
+
 }
