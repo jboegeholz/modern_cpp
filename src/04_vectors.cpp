@@ -2,38 +2,40 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 int main()
 {
-    std::vector<int> coll{ 1, 2, 3, 5, 8, 9, 11, 13, 17 };  // initialize vector with values
+    std::vector<int> coll;
+    assert( coll.capacity() == 0);
+    assert( coll.empty());
 
-    for (unsigned i = 0; i < coll.size(); ++i) {   // print elements with index operator
-        std::cout << coll[i] << ' ';
+    // add values at back
+    coll.push_back(1);
+    coll.push_back(2);
+    coll.push_back(3);
+    assert( coll.size() == 3);
+
+    // get element via index
+    assert(coll.at(1) == 2);
+
+    // out of range
+    try {
+        coll.at(3) = 4;      // vector::at throws an out-of-range
     }
-    std::cout << '\n';
-
-    std::cout << "capacity(): " << coll.capacity() << '\n';
-
-    coll.push_back(15);                            // append one element
-    std::cout << "capacity(): " << coll.capacity() << '\n';
-
-    for (int elem : coll) {                        // print elements with range-based for loop
-        std::cout << elem << ' ';
+    catch (const std::out_of_range& oor) {
+        std::cerr << "Out of Range error: " << oor.what() << '\n';
     }
-    std::cout << '\n';
 
-    coll.insert(coll.begin(), { 0, 8, 23 });         // insert multiple elements
+    // get last element
+    assert(coll.back() == 3);
 
-    std::sort(coll.begin(), coll.end());           // sort all elements
-    for (auto pos = coll.begin(); pos != coll.end(); ++pos) {  // low-level loop with iterator
-        std::cout << *pos << ' ';                                // printing each element
-    }
-    std::cout << '\n';
+    // get first element
+    assert(coll.front() == 1);
 
-    std::sort(coll.begin(), coll.end(),            // sort all elements descending
-        [](auto x, auto y) { return x > y; });
-    for (auto pos = coll.begin(); pos != coll.end(); ++pos) {  // low-level loop with iterator
-        std::cout << *pos << ' ';                                // printing each element
-    }
-    std::cout << '\n';
+    // remove last element
+    coll.pop_back();
+    assert(coll.size() == 2);
+
+
 }
