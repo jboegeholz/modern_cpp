@@ -10,13 +10,14 @@ int main()
     std::vector<double> double_vector;
     assert( int_vector.capacity() == 0);
     assert( int_vector.empty());
-
+    assert(int_vector.back() == 3);
     // add values at back
     int_vector.push_back(1);
     int_vector.push_back(2);
     int_vector.push_back(3);
     assert( int_vector.size() == 3);
     assert( int_vector.capacity() == 3);
+
     int_vector.push_back(4);
     assert( int_vector.size() == 4);
     assert( int_vector.capacity() == 4);
@@ -26,13 +27,14 @@ int main()
 
     // get element via index
     assert(int_vector.at(1) == 2);
+    assert(int_vector[2] == 3);
 
     // out of range
     try {
         int_vector.at(10) = 4;      // vector::at throws an out-of-range
     }
-    catch (const std::out_of_range& oor) {
-        std::cerr << "Out of Range error: " << oor.what() << '\n';
+    catch (const std::out_of_range& ex) {
+        std::cerr << "Out of Range error: " << ex.what() << '\n';
     }
 
     // get last element
@@ -44,6 +46,7 @@ int main()
     // remove last element
     int_vector.pop_back();
     assert(int_vector.size() == 4);
+
 
     std::vector<int> v;
     for (int i = 0; i < 20; ++i) {
