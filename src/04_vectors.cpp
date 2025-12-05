@@ -10,7 +10,7 @@ int main()
     std::vector<double> double_vector;
     assert( int_vector.capacity() == 0);
     assert( int_vector.empty());
-    assert(int_vector.back() == 3);
+
     // add values at back
     int_vector.push_back(1);
     int_vector.push_back(2);
@@ -56,6 +56,8 @@ int main()
 
 
     std::vector<std::string> str_vector;
+    str_vector.reserve(6);
     str_vector.emplace_back("Hello");
+    str_vector.emplace_back("World");
 
 }
