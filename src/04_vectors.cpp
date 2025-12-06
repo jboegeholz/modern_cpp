@@ -2,38 +2,62 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 int main()
 {
-    std::vector<int> coll{ 1, 2, 3, 5, 8, 9, 11, 13, 17 };  // initialize vector with values
+    std::vector<int> int_vector;
+    std::vector<double> double_vector;
+    assert( int_vector.capacity() == 0);
+    assert( int_vector.empty());
 
-    for (unsigned i = 0; i < coll.size(); ++i) {   // print elements with index operator
-        std::cout << coll[i] << ' ';
+    // add values at back
+    int_vector.push_back(1);
+    int_vector.push_back(2);
+    int_vector.push_back(3);
+    assert( int_vector.size() == 3);
+    assert( int_vector.capacity() == 3);
+
+    int_vector.push_back(4);
+    assert( int_vector.size() == 4);
+    assert( int_vector.capacity() == 4);
+    int_vector.push_back(5);
+    assert( int_vector.size() == 5 );
+    assert( int_vector.capacity() == 6);
+
+    // get element via index
+    assert(int_vector.at(1) == 2);
+    assert(int_vector[2] == 3);
+
+    // out of range
+    try {
+        int_vector.at(10) = 4;      // vector::at throws an out-of-range
     }
-    std::cout << '\n';
-
-    std::cout << "capacity(): " << coll.capacity() << '\n';
-
-    coll.push_back(15);                            // append one element
-    std::cout << "capacity(): " << coll.capacity() << '\n';
-
-    for (int elem : coll) {                        // print elements with range-based for loop
-        std::cout << elem << ' ';
+    catch (const std::out_of_range& ex) {
+        std::cerr << "Out of Range error: " << ex.what() << '\n';
     }
-    std::cout << '\n';
 
-    coll.insert(coll.begin(), { 0, 8, 23 });         // insert multiple elements
+    // get last element
+    assert(int_vector.back() == 5);
 
-    std::sort(coll.begin(), coll.end());           // sort all elements
-    for (auto pos = coll.begin(); pos != coll.end(); ++pos) {  // low-level loop with iterator
-        std::cout << *pos << ' ';                                // printing each element
+    // get first element
+    assert(int_vector.front() == 1);
+
+    // remove last element
+    int_vector.pop_back();
+    assert(int_vector.size() == 4);
+
+
+    std::vector<int> v;
+    for (int i = 0; i < 20; ++i) {
+        v.push_back(i);
+        std::cout << "Size: " << v.size() << ", Capacity: " << v.capacity() << '\n';
     }
-    std::cout << '\n';
 
-    std::sort(coll.begin(), coll.end(),            // sort all elements descending
-        [](auto x, auto y) { return x > y; });
-    for (auto pos = coll.begin(); pos != coll.end(); ++pos) {  // low-level loop with iterator
-        std::cout << *pos << ' ';                                // printing each element
-    }
-    std::cout << '\n';
+
+    std::vector<std::string> str_vector;
+    str_vector.reserve(6);
+    str_vector.emplace_back("Hello");
+    str_vector.emplace_back("World");
+
 }
