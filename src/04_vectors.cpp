@@ -16,14 +16,22 @@ int main()
     int_vector.push_back(2);
     int_vector.push_back(3);
     assert( int_vector.size() == 3);
-    assert( int_vector.capacity() == 3);
+#if defined(__clang__)
+    assert(int_vector.capacity() == 4);
+#else
+    assert(int_vector.capacity() == 3);
+#endif
 
     int_vector.push_back(4);
     assert( int_vector.size() == 4);
     assert( int_vector.capacity() == 4);
     int_vector.push_back(5);
     assert( int_vector.size() == 5 );
-    assert( int_vector.capacity() == 6);
+#if defined(__clang__)
+    assert(int_vector.capacity() == 8);
+#else
+    assert(int_vector.capacity() == 6);
+#endif
 
     // get element via index
     assert(int_vector.at(1) == 2);
