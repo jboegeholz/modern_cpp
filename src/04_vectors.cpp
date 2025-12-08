@@ -55,6 +55,8 @@ int main()
     int_vector.pop_back();
     assert(int_vector.size() == 4);
 
+    int_vector.insert(int_vector.begin(), 0);
+    assert(int_vector.at(0) == 0);
 
     std::vector<int> v;
     for (int i = 0; i < 20; ++i) {
