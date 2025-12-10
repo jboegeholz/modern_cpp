@@ -31,6 +31,7 @@ int main()
 {
     std::cout << s_allocations.current_usage() << std::endl;
     std::vector<Vec3D> my_vector;
+    my_vector.reserve(20);
     std::cout << s_allocations.current_usage() << std::endl;
     for (int i=0; i < 20; ++i)
     {
