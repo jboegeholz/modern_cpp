@@ -3,7 +3,11 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
-
+struct Vec3D
+{
+    int x, y, z;
+    Vec3D(const int x, const int y, const int z) : x(x), y(y), z(z) {}
+};
 int main()
 {
     std::vector<int> int_vector;
@@ -69,5 +73,14 @@ int main()
     str_vector.reserve(6);
     str_vector.emplace_back("Hello");
     str_vector.emplace_back("World");
+
+
+    std::vector<Vec3D> my_vector;
+    my_vector.reserve(20);
+
+    for (int i=0; i < 20; ++i)
+    {
+        my_vector.emplace_back(1, 2, 3 );
+    }
 
 }

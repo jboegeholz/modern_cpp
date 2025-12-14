@@ -24,8 +24,8 @@ void operator delete(void* memory, size_t size)
 }
 struct Vec3D
 {
-    std::byte x, y, z;
-    Vec3D(const std::byte x_, const std::byte y_, const std::byte z_) : x(x_), y(y_), z(z_) {}
+    int x, y, z;
+    Vec3D(const int x, const int y, const int z) : x(x), y(y), z(z) {}
 };
 int main()
 {
@@ -35,7 +35,7 @@ int main()
     std::cout << s_allocations.current_usage() << std::endl;
     for (int i=0; i < 20; ++i)
     {
-        my_vector.emplace_back(static_cast<std::byte>(1),static_cast<std::byte>(2),static_cast<std::byte>(3));
+        my_vector.emplace_back(1, 2, 3 );
     }
     std::cout << s_allocations.current_usage() << std::endl;
 
