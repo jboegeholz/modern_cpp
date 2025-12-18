@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cassert>
 #include <vector>
-
+#include <initializer_list>
 struct Vec3D
 {
     int x{}, y{}, z{};
@@ -9,6 +9,19 @@ struct Vec3D
     {
         std::cout << "default c'tor\n";
     };
+    Vec3D(const std::initializer_list<int> list)
+    {
+        std::cout << "initializer_list ctor" << std::endl;
+        if (!std::empty(list)) {
+            for (const auto& i : list)
+                std::cout << i << ", ";
+
+            std::cout << "(" << list.size() << " elements)\n";
+        }
+        else
+            std::cout << "empty list\n";
+
+    }
     Vec3D(const int x, const int y, const int z) : x(x), y(y), z(z)
     {
         std::cout << "c'tor\n";
@@ -49,15 +62,16 @@ int main()
     assert(v1.y == 0);
     assert(v1.z == 0);
 
-    const Vec3D v2 = {1,2,3};
-    assert(v2.x == 1);
-    assert(v2.y == 2);
-    assert(v2.z == 3);
-
-    const Vec3D v3 = v2;
+    const Vec3D v3(1,2,3);
     assert(v3.x == 1);
     assert(v3.y == 2);
     assert(v3.z == 3);
+
+    const Vec3D v2 = {1,2,3};
+    /*assert(v2.x == 1);
+    assert(v2.y == 2);
+    assert(v2.z == 3);*/
+
 
     Vec3D v4;
     v4 = v3;
