@@ -82,6 +82,12 @@ TEST(VectorTest, VectorElementInsert) {
     EXPECT_EQ(int_vector.at(0), 0);
 }
 
+TEST(VectorTest, VectorReserve) {
+    std::vector<int> int_vector;
+    int_vector.reserve(100);
+    EXPECT_EQ(int_vector.capacity(), 100);
+}
+
 TEST(VectorTest, VectorEmplaceBack) {
     std::vector<Vec3D> my_vector;
     my_vector.emplace_back(1, 2, 3 );
