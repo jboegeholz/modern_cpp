@@ -4,6 +4,9 @@ project(modern_cpp)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+add_subdirectory(external/googletest)
+
+enable_testing()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     message(STATUS "Compiler Clang")
@@ -43,3 +46,10 @@ add_executable(chrono src/18_chrono.cpp)
 add_executable(stack_heap src/19_stack_vs_heap.cpp)
 add_executable(typesafe_ids src/20_typesafe_ids.cpp)
 add_executable(calling_convetions src/21_calling_conventions.cpp)
+
+
+add_executable(unit_tests tests/04_test_vector.cpp)
+target_link_libraries(unit_tests gtest_main)
+
+include(GoogleTest)
+gtest_discover_tests(unit_tests)
