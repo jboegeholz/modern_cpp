@@ -67,14 +67,22 @@ TEST(VectorTest, VectorGetElementException) {
 
 TEST(VectorTest, VectorElementBackFront) {
     const std::vector<int> int_vector = {1,2,3};
-    EXPECT_EQ(int_vector.front(), 1);
-    EXPECT_EQ(int_vector.back(), 3);
+    if (!int_vector.empty())
+    {
+        EXPECT_EQ(int_vector.front(), 1);
+        EXPECT_EQ(int_vector.back(), 3);
+    }
 }
 
 TEST(VectorTest, VectorElementPopBack) {
     std::vector<int> int_vector = {1,2,3};
     int_vector.pop_back();
     EXPECT_EQ(int_vector.size(), 2);
+}
+TEST(VectorTest, VectorClear) {
+    std::vector<int> int_vector = {1,2,3};
+    int_vector.clear();
+    EXPECT_EQ(int_vector.size(), 0);
 }
 TEST(VectorTest, VectorElementInsert) {
     std::vector<int> int_vector = {1,2,3};
@@ -86,6 +94,13 @@ TEST(VectorTest, VectorReserve) {
     std::vector<int> int_vector;
     int_vector.reserve(100);
     EXPECT_EQ(int_vector.capacity(), 100);
+}
+
+TEST(VectorTest, VectorEmplaceBackString) {
+    std::vector<std::string> my_vector;
+    my_vector.emplace_back("Hello");
+    my_vector.emplace_back("World");
+    EXPECT_EQ(my_vector.at(0), "Hello");
 }
 
 TEST(VectorTest, VectorEmplaceBack) {
