@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <cstddef>
+#include <memory>
 namespace  JB
 {
     template <typename T>
@@ -19,12 +20,32 @@ namespace  JB
         T * underlying_ptr;
     };
 }
-TEST(UniquePointer, UniquePointerInstantiate) {
+class Entity
+{
+public:
+    Entity()
+    {
+        std::cout << "Created" << std::endl;
+    };
+    ~Entity()
+    {
+        std::cout << "Destroyed" << std::endl;
+    };
+};
+TEST(MyUniquePointer, UniquePointerInstantiate) {
     const JB::unique_ptr<int> p {new int(10)};
     EXPECT_NE(p, nullptr);
 }
 
-TEST(UniquePointer, UniquePointerInstantiateNull) {
+TEST(MyUniquePointer, UniquePointerInstantiateNull) {
     const JB::unique_ptr<int> p;
     EXPECT_EQ(p, nullptr);
+}
+
+
+TEST(UniquePointer, UniquePointerInstantiateNull) {
+    {
+        auto entity = std::make_unique<Entity>();
+        EXPECT_NE(entity, nullptr);
+    }
 }
