@@ -50,10 +50,14 @@ add_executable(calling_convetions src/21_calling_conventions.cpp)
 # TDD
 
 include(GoogleTest)
-add_executable(test_vector tests/04_test_vector.cpp)
-target_link_libraries(test_vector gtest_main)
-gtest_discover_tests(test_vector)
-
 add_executable(test_smart_pointers tests/01_smart_pointers.cpp)
 target_link_libraries(test_smart_pointers gtest_main)
 gtest_discover_tests(test_smart_pointers)
+
+add_executable(test_array tests/02_test_std_array.cpp)
+target_link_libraries(test_array gtest_main)
+gtest_discover_tests(test_array)
+
+add_executable(test_vector tests/04_test_vector.cpp)
+target_link_libraries(test_vector gtest_main)
+gtest_discover_tests(test_vector)

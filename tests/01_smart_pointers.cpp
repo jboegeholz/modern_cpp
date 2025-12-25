@@ -32,6 +32,7 @@ public:
         std::cout << "Destroyed" << std::endl;
     };
 };
+
 TEST(MyUniquePointer, UniquePointerInstantiate) {
     const JB::unique_ptr<int> p {new int(10)};
     EXPECT_NE(p, nullptr);
