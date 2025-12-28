@@ -13,6 +13,18 @@ TEST(GoogleTestExamples, EXPECT_NE) {
     EXPECT_NE(a, b);
 }
 
+TEST(GoogleTestExamples, EXPECT_FLOAT_EQ) {
+    const float a = 10.0;
+    const float b = 10.000001;
+    EXPECT_FLOAT_EQ(a, b);
+}
+
+TEST(GoogleTestExamples, EXPECT_DOUBLE_EQ) {
+    const float a = 10.0;
+    const float b = 10.0000001;
+    EXPECT_DOUBLE_EQ(a, b);
+}
+
 TEST(GoogleTestExamples, ArrayException) {
     constexpr std::array<int, 3> my_array = {1,2,3};
     EXPECT_THROW((void)my_array.at(10), std::out_of_range);
