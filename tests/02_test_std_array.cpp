@@ -38,6 +38,7 @@ TEST(ArrayTest, ArrayGetElementException) {
     constexpr std::array<int, 3> my_array = {1,2,3};
     EXPECT_THROW((void)my_array.at(10), std::out_of_range);
 }
+
 int get_size(const int *arr)
 {
     return sizeof(arr);

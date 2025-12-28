@@ -44,7 +44,7 @@ TEST(MyUniquePointer, UniquePointerInstantiateNull) {
 }
 
 
-TEST(UniquePointer, UniquePointerInstantiateNull) {
+TEST(UniquePointer, UniquePointerInstantiate) {
     {
         auto entity = std::make_unique<Entity>();
         EXPECT_NE(entity, nullptr);
