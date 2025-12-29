@@ -24,12 +24,7 @@ TEST(ArrayTest, CStyleArrayPointerDecay) {
     EXPECT_EQ(sizeof(my_int_array), 12);
     EXPECT_EQ(get_size(my_int_array), 8); // decays to 64bit pointer
 }
-TEST(ArrayTest, CStyleArrayIndex) {
-    int my_int_array[3] = {1, 2, 3};
-    my_int_array[4] = 1;
-    EXPECT_EQ(my_int_array[4], 1);
 
-}
 
 TEST(ArrayTest, StdArray) {
     std::array<int, 3> my_std_array = {1, 2, 3};
@@ -37,6 +32,14 @@ TEST(ArrayTest, StdArray) {
     EXPECT_EQ(my_std_array[0], 1);
     EXPECT_EQ(my_std_array[1], 2);
     EXPECT_EQ(my_std_array[2], 3);
+
+}
+TEST(ArrayTest, StdArrayAt) {
+    std::array<int, 3> my_std_array = {1, 2, 3};
+
+    EXPECT_EQ(my_std_array.at(0), 1);
+    EXPECT_EQ(my_std_array.at(1), 2);
+    EXPECT_EQ(my_std_array.at(2), 3);
 
 }
 TEST(ArrayTest, StdArraySize) {
