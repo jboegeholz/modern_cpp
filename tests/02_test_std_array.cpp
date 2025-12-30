@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <gtest/gtest.h>
 #include <array>
+#include <span>
 
 TEST(ArrayTest, CStyleArray) {
     int my_int_array[3] = {1, 2, 3};
@@ -86,4 +88,28 @@ TEST(ArrayTest, ArrayTestCatchException) {
         EXPECT_NE(ex.what(), nullptr);
     }
 }
+void power2(std::span<int> arr)
+{
+    for (int & i : arr) {
+        i *= 2;
+    }
+}
+TEST(ArrayTest, StdArrayFunctionCall) {
+    std::array<int, 4> my_std_array = {8, 7, 6, 5};
+    power2(my_std_array);
+    EXPECT_EQ(my_std_array[0], 16);
+}
+
+TEST(ArrayTest, StdArraySort) {
+    std::array<int, 4> my_std_array = {8, 7, 6, 5};
+    std::sort(my_std_array.begin(), my_std_array.end());
+    EXPECT_EQ(my_std_array[0], 5);
+}
+
+TEST(ArrayTest, StdArraySortWithRanges) {
+    std::array<int, 4> my_std_array = {8, 7, 6, 5};
+    std::ranges::sort(my_std_array);
+    EXPECT_EQ(my_std_array[0], 5);
+}
+
 
