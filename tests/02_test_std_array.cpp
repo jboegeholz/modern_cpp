@@ -111,5 +111,3 @@ TEST(ArrayTest, StdArraySortWithRanges) {
     std::ranges::sort(my_std_array);
     EXPECT_EQ(my_std_array[0], 5);
 }
-
-
