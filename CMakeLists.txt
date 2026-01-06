@@ -26,7 +26,6 @@ endif()
 
 add_executable(println src/00_println.cpp)
 add_executable(auto_keyword src/01_auto_keyword.cpp)
-add_executable(std_array src/02_std_array.cpp)
 add_executable(std_iota src/03_std_iota.cpp)
 add_executable(std_vector src/04_vectors.cpp)
 add_executable(demangling src/05_demangling.cpp)
@@ -66,3 +65,8 @@ gtest_discover_tests(test_array)
 add_executable(test_vector tests/04_test_vector.cpp)
 target_link_libraries(test_vector gtest_main)
 gtest_discover_tests(test_vector)
+
+add_executable(test_ctors tests/17_test_constructors.cpp)
+target_link_libraries(test_ctors gtest_main)
+gtest_discover_tests(test_ctors)
+
