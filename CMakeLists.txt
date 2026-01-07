@@ -23,8 +23,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     add_compile_options(/W4 /WX /std:c++23)
 endif()
 
-
-add_executable(std_iota src/03_std_iota.cpp)
 add_executable(demangling src/05_demangling.cpp)
 add_executable(lambdas src/05_lambdas.cpp)
 add_executable(ranges src/07_ranges.cpp)
@@ -57,6 +55,9 @@ add_executable(auto_keyword tests/02_test_auto_keyword.cpp)
 target_link_libraries(auto_keyword gtest_main)
 gtest_discover_tests(auto_keyword)
 
+add_executable(test_iota tests/03_test_std_iota.cpp)
+target_link_libraries(test_iota gtest_main)
+gtest_discover_tests(test_iota)
 
 add_executable(test_smart_pointers tests/01_smart_pointers.cpp)
 target_link_libraries(test_smart_pointers gtest_main)
