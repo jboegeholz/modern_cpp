@@ -24,7 +24,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 endif()
 
 add_executable(demangling src/05_demangling.cpp)
-add_executable(lambdas src/05_lambdas.cpp)
 add_executable(replace src/08_replace.cpp)
 add_executable(optional src/10_optional.cpp)
 add_executable(async src/11_async.cpp)
@@ -67,6 +66,11 @@ gtest_discover_tests(test_array)
 add_executable(test_vector tests/04_test_vector.cpp)
 target_link_libraries(test_vector gtest_main)
 gtest_discover_tests(test_vector)
+
+add_executable(test_lambdas tests/05_test_lambdas.cpp)
+target_link_libraries(test_lambdas gtest_main)
+gtest_discover_tests(test_lambdas)
+
 
 add_executable(move_semantics tests/06_move_semantics.cpp)
 target_link_libraries(move_semantics gtest_main)
