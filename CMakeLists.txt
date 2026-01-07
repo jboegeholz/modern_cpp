@@ -24,7 +24,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 endif()
 
 
-add_executable(auto_keyword src/01_auto_keyword.cpp)
 add_executable(std_iota src/03_std_iota.cpp)
 add_executable(demangling src/05_demangling.cpp)
 add_executable(lambdas src/05_lambdas.cpp)
@@ -53,6 +52,11 @@ gtest_discover_tests(google_test_examples)
 add_executable(std_print tests/01_test_std_print.cpp)
 target_link_libraries(std_print gtest_main)
 gtest_discover_tests(std_print)
+
+add_executable(auto_keyword tests/02_test_auto_keyword.cpp)
+target_link_libraries(auto_keyword gtest_main)
+gtest_discover_tests(auto_keyword)
+
 
 add_executable(test_smart_pointers tests/01_smart_pointers.cpp)
 target_link_libraries(test_smart_pointers gtest_main)
