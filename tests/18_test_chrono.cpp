@@ -1,13 +1,14 @@
-#include <iostream>
+#include <gtest/gtest.h>
 #include <chrono>
-#include <thread>
-int main() {
+TEST(ChronotTest, Integer) {
     using namespace std::chrono_literals;
-    std::cout << "Hello Chrono Package" << std::endl;
     const auto start = std::chrono::high_resolution_clock::now();
-    std::this_thread::sleep_for(2000ms);
+
+    std::this_thread::sleep_for(2s);
+
     const auto stop = std::chrono::high_resolution_clock::now();
     const std::chrono::duration<double, std::milli>diff = stop - start;
-    std::cout << "diff: " << diff;
+    EXPECT_GE(diff, 2000ms);
 
 }
+
