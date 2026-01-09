@@ -78,16 +78,11 @@ add_executable(test_lambdas tests/05_test_lambdas.cpp)
 target_link_libraries(test_lambdas gtest_main)
 gtest_discover_tests(test_lambdas)
 
-
-add_executable(move_semantics tests/06_move_semantics.cpp)
-target_link_libraries(move_semantics gtest_main)
-gtest_discover_tests(move_semantics)
-
 add_executable(test_ranges tests/07_test_ranges.cpp)
 target_link_libraries(test_ranges gtest_main)
 gtest_discover_tests(test_ranges)
 
-add_executable(test_ctors tests/17_test_constructors.cpp)
+add_executable(test_ctors tests/17_test_rule_of_three.cpp)
 target_link_libraries(test_ctors gtest_main)
 gtest_discover_tests(test_ctors)
 
