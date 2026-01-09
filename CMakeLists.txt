@@ -54,6 +54,10 @@ add_executable(test_iota tests/03_test_std_iota.cpp)
 target_link_libraries(test_iota gtest_main)
 gtest_discover_tests(test_iota)
 
+add_executable(unique_pointers tests/08_0_unique_pointers.cpp)
+target_link_libraries(unique_pointers gtest_main)
+gtest_discover_tests(unique_pointers)
+
 add_executable(test_smart_pointers tests/08_smart_pointers.cpp)
 target_link_libraries(test_smart_pointers gtest_main)
 gtest_discover_tests(test_smart_pointers)
