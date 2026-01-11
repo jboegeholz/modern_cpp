@@ -62,6 +62,10 @@ add_executable(test_smart_pointers tests/08_1_unique_pointer_own_impl.cpp)
 target_link_libraries(test_smart_pointers gtest_main)
 gtest_discover_tests(test_smart_pointers)
 
+add_executable(test_shared_pointer tests/08_2_shared_pointer.cpp)
+target_link_libraries(test_shared_pointer gtest_main)
+gtest_discover_tests(test_shared_pointer)
+
 add_executable(test_std_span tests/09_test_std_span.cpp)
 target_link_libraries(test_std_span gtest_main)
 gtest_discover_tests(test_std_span)
