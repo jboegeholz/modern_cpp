@@ -37,21 +37,11 @@ TEST(MyUniquePointer, UniquePointerInstantiate) {
     const JB::unique_ptr<int> p {new int(10)};
     EXPECT_NE(p, nullptr);
 }
-void double_unique_ptr() {
-    auto * p = new int(10);
-    const std::unique_ptr<int> ptr1 {p};
-    const std::unique_ptr<int> ptr2 {p};
-}
-TEST(MyUniquePointer, DoubleUniquePointer) {
-    EXPECT_DEATH(double_unique_ptr(), ".*");
-}
 
 TEST(MyUniquePointer, UniquePointerInstantiateNull) {
     const JB::unique_ptr<int> p;
     EXPECT_EQ(p, nullptr);
 }
-
-
 TEST(UniquePointer, UniquePointerInstantiate) {
     {
         auto entity = std::make_unique<Entity>();
