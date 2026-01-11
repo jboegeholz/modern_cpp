@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
-#include <cstddef>
+
 #include <memory>
+#include <type_traits>
 namespace  JB
 {
     template <typename T>
@@ -16,6 +17,8 @@ namespace  JB
         bool operator!=(std::nullptr_t) const noexcept {
             return underlying_ptr != nullptr;
         }
+        unique_ptr(const unique_ptr&) = delete;
+        unique_ptr& operator=(const unique_ptr&) = delete;
     private:
         T * underlying_ptr;
     };
@@ -42,9 +45,13 @@ TEST(MyUniquePointer, UniquePointerInstantiateNull) {
     const JB::unique_ptr<int> p;
     EXPECT_EQ(p, nullptr);
 }
-TEST(UniquePointer, UniquePointerInstantiate) {
-    {
-        auto entity = std::make_unique<Entity>();
-        EXPECT_NE(entity, nullptr);
-    }
+
+
+TEST(UniquePointer, NoCopyCtor) {
+    static_assert(!std::is_copy_constructible_v<JB::unique_ptr<Entity>>,
+                  "MyType must not be copy constructible");
+}
+TEST(UniquePointer, NoAssignmentOperator) {
+    static_assert(!std::is_copy_assignable_v<JB::unique_ptr<Entity>>,
+                  "MyType must not be copy constructible");
 }
