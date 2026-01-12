@@ -54,22 +54,6 @@ add_executable(test_iota tests/03_test_std_iota.cpp)
 target_link_libraries(test_iota gtest_main)
 gtest_discover_tests(test_iota)
 
-add_executable(unique_pointers tests/08_0_unique_pointers.cpp)
-target_link_libraries(unique_pointers gtest_main)
-gtest_discover_tests(unique_pointers)
-
-add_executable(test_smart_pointers tests/08_1_unique_pointer_own_impl.cpp)
-target_link_libraries(test_smart_pointers gtest_main)
-gtest_discover_tests(test_smart_pointers)
-
-add_executable(test_shared_pointer tests/08_2_shared_pointer.cpp)
-target_link_libraries(test_shared_pointer gtest_main)
-gtest_discover_tests(test_shared_pointer)
-
-add_executable(test_std_span tests/09_test_std_span.cpp)
-target_link_libraries(test_std_span gtest_main)
-gtest_discover_tests(test_std_span)
-
 add_executable(test_array tests/02_test_std_array.cpp)
 target_link_libraries(test_array gtest_main)
 gtest_discover_tests(test_array)
@@ -85,6 +69,22 @@ gtest_discover_tests(test_lambdas)
 add_executable(test_ranges tests/07_test_ranges.cpp)
 target_link_libraries(test_ranges gtest_main)
 gtest_discover_tests(test_ranges)
+
+add_executable(unique_pointers tests/08_0_unique_pointers.cpp)
+target_link_libraries(unique_pointers gtest_main)
+gtest_discover_tests(unique_pointers)
+
+add_executable(test_smart_pointers tests/08_1_unique_pointer_own_impl.cpp)
+target_link_libraries(test_smart_pointers gtest_main)
+gtest_discover_tests(test_smart_pointers)
+
+add_executable(test_shared_pointer tests/08_2_shared_pointer.cpp)
+target_link_libraries(test_shared_pointer gtest_main)
+gtest_discover_tests(test_shared_pointer)
+
+add_executable(test_std_span tests/09_test_std_span.cpp)
+target_link_libraries(test_std_span gtest_main)
+gtest_discover_tests(test_std_span)
 
 add_executable(test_ctors tests/17_test_rule_of_three.cpp)
 target_link_libraries(test_ctors gtest_main)
