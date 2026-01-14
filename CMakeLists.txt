@@ -25,13 +25,10 @@ endif()
 
 add_executable(demangling src/05_demangling.cpp)
 add_executable(replace src/08_replace.cpp)
-add_executable(optional src/10_optional.cpp)
 add_executable(async src/11_async.cpp)
 add_executable(templates src/14_templates.cpp src/stackinst.cpp)
 add_executable(memory_allocation src/15_memory_allocation.cpp)
-add_executable(constructors src/17_constructors.cpp)
 add_executable(ostream src/17_ostream.cpp)
-add_executable(typesafe_ids src/20_typesafe_ids.cpp)
 add_executable(calling_convetions src/21_calling_conventions.cpp)
 
 # TDD
@@ -85,6 +82,11 @@ gtest_discover_tests(test_shared_pointer)
 add_executable(test_std_span tests/09_test_std_span.cpp)
 target_link_libraries(test_std_span gtest_main)
 gtest_discover_tests(test_std_span)
+
+add_executable(test_optional tests/10_test_optional.cpp)
+target_link_libraries(test_optional gtest_main)
+gtest_discover_tests(test_optional)
+
 
 add_executable(test_ctors tests/17_test_rule_of_three.cpp)
 target_link_libraries(test_ctors gtest_main)
