@@ -36,7 +36,7 @@ add_executable(calling_convetions src/21_calling_conventions.cpp)
 include(GoogleTest)
 
 add_executable(google_test_examples tests/00_google_test.cpp)
-target_link_libraries(google_test_examples gtest_main)
+target_link_libraries(google_test_examples gtest_main gmock)
 gtest_discover_tests(google_test_examples)
 
 add_executable(std_print tests/01_test_std_print.cpp)

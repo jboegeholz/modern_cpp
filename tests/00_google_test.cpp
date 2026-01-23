@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <array>
+#include <iostream>
 
 TEST(GoogleTestExamples, EXPECT_EQ) {
     const int a = 10;
@@ -14,14 +16,14 @@ TEST(GoogleTestExamples, EXPECT_NE) {
 }
 
 TEST(GoogleTestExamples, EXPECT_FLOAT_EQ) {
-    const float a = 10.0;
-    const float b = 10.000001;
+    const float a = 10.0f;
+    const float b = 10.000001f;
     EXPECT_FLOAT_EQ(a, b);
 }
 
 TEST(GoogleTestExamples, EXPECT_DOUBLE_EQ) {
-    const float a = 10.0;
-    const float b = 10.0000001;
+    const double a = 10.0;
+    const double b = 10.0000001;
     EXPECT_DOUBLE_EQ(a, b);
 }
 
@@ -30,6 +32,14 @@ TEST(GoogleTestExamples, ArrayException) {
     EXPECT_THROW((void)my_array.at(10), std::out_of_range);
 }
 
+TEST(GoogleTestExamples, CaputreOStream) {
+    testing::internal::CaptureStdout();
+
+    std::cout << "Hello World";
+
+    const std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Hello World");
+}
 
 class TestFixture : public ::testing::Test {
 protected:
@@ -70,3 +80,10 @@ INSTANTIATE_TEST_SUITE_P(
         std::make_pair(2, 2)
     )
 );
+
+// GMock Tests
+TEST(TestRandowmNumbers, RandomInt)
+{
+    std::string output = "Hello";
+    ASSERT_THAT(output, testing::Not(testing::IsEmpty()));
+}
