@@ -39,6 +39,10 @@ add_executable(google_test_examples tests/00_google_test.cpp)
 target_link_libraries(google_test_examples gtest_main gmock)
 gtest_discover_tests(google_test_examples)
 
+add_executable(test_constexpr tests/01_test_constexpr.cpp)
+target_link_libraries(test_constexpr gtest_main)
+gtest_discover_tests(test_constexpr)
+
 add_executable(std_print tests/01_test_std_print.cpp)
 target_link_libraries(std_print gtest_main)
 gtest_discover_tests(std_print)
