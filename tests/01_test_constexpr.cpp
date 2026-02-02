@@ -1,5 +1,11 @@
 
 #include <gtest/gtest.h>
+#include <numbers>
+
+constexpr double PI = std::numbers::pi;
+constexpr double E = std::numbers::e;
+
+
 constexpr int square(int x) {
     return x * x;
 }
